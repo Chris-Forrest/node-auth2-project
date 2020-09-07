@@ -1,10 +1,14 @@
 const express = require("express");
+const cors = require("cors");
+const usersRouter = require("./users/users-router");
 
 const server = express()
 const port = process.env.PORT || 6000
 
+server.use(cors())
 server.use(express.json())
 server.use(logger)
+server.use(usersRouter)
 
 
 function logger(req,res,next){
