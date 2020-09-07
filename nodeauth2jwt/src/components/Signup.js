@@ -6,8 +6,8 @@ initialFormValues={
     password:"",
     department:""
 }
-const Register=()=> {
+const Signup=()=> {
 
 };
 
-export default Register;
+export default Signup;
