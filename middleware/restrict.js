@@ -1,4 +1,5 @@
 const jwt = require("jsonwebtoken");
+const Users = require("../users/users-model");
 
 function restrict(department){
     const departments = ["sales", "marketing", "finance"]
@@ -22,7 +23,7 @@ function restrict(department){
             //check that decoded department equals department 
             //if the decoded department is not equal to departments.indexOf(departments) they don't gain access
             if(department && departments.indexOf(decoded.userDepartment) !== departments.indexOf(department)){
-                return res.status(200).json({ message: " You shall not pass"})
+                return res.status(401).json({ message: " You shall not pass"})
             }
             req.token = decoded
             next()

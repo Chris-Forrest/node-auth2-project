@@ -28,8 +28,16 @@ router.post("/register", async(req,res,next) => {
             password: await bcrypt.hash(password, 12),
             department,
         })
+        const token = jwt.sign({
+            userID: newUser.id,
+            userDepartment: newUser.department,
+        },process.env.JWT_SECRET)
+        //send the token back
+        res.cookie("token", token)  //this sends the token back as a cookie 
+        //this sends the cookie back in the body 
+        res.status(201).json({ token:token, message:`Welcome ${newUser.username} department:${newUser.department}`}) 
 
-        res.status(201).json(newUser)
+       // res.status(201).json(newUser)
 
     }catch(err){
         next(err)
