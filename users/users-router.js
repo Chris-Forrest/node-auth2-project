@@ -61,8 +61,9 @@ router.post("/login", async (req,res,next) => {
             userDepartment: user.department,
         },process.env.JWT_SECRET)
         //send the token back
-        res.cookie("token", token)
-        res.status(200).json({ token:token, message:`Welcome ${user.username} ${user.department}`})
+        res.cookie("token", token)  //this sends the token back as a cookie 
+        //this sends the cookie back in the body 
+        res.status(200).json({ token:token, message:`Welcome ${user.username} department:${user.department}`}) 
 
     }catch(err){
         next(err)

@@ -8,7 +8,7 @@ const port = process.env.PORT || 6000
 server.use(cors())
 server.use(express.json())
 server.use(logger)
-server.use(usersRouter)
+server.use("/api",usersRouter)
 
 
 function logger(req,res,next){
