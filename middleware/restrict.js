@@ -10,12 +10,12 @@ function restrict(department){
         try{//assume the token gets passed to the api as an authorization header
             const token = req.headers.authorization
             if(!token){
-                return res.status(401).json(authError)
+                return res.status(401).json({ message: "no token"})
             }
             //decode the token resign the payload and check if the signature is valid
         jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
             if(err){
-                return res.status(401).json(authError)
+                return res.status(401).json({message: "invalid token"})
             }
             //check that decoded department equals department 
             //if the decoded department is not equal to departments.indexOf(departments) they don't gain access
@@ -25,8 +25,6 @@ function restrict(department){
             req.token = decoded
             next()
         })
-
-
         }catch(err){
             next(err)
         }

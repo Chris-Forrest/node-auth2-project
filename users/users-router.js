@@ -51,6 +51,10 @@ router.post("/login", async (req,res,next) => {
             return res.status(401).json({ message: "Invalid credentials"})
         }
 
+        if(!department){
+            return res.status(401).json({ message: "invalid department"})
+        }
+
         //generate new json web token 
         const token = jwt.sign({
             userID: user.id,
