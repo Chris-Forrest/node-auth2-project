@@ -15,12 +15,12 @@ function App() {
        
         <Link to="/signup">SignUp</Link>
         <Link to="/login">Login</Link>
-        <Link to="/protected">Users List</Link>
+        <Link to="/getusers">Users List</Link>
 
       </header>
       <Switch>
         
-        <PrivateRoute exact path="/protected" component={GetUsers} />
+        <Route path="/getusers" component={GetUsers} />
         <Route path="/signup" component={Signup} />
         <Route path="/login" component={Login} />
 

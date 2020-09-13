@@ -18,15 +18,15 @@ const Signup=()=> {
         })
     };
 
-    const submitRegister = e => {
+    const submitRegister = (e) => {
         e.preventDefault();
-        axios   
+        axios
             .post("http://localhost:6000/api/register",inputs)
             .then(res => {
                 console.log("this is from the register call", res.data)
-               // history.push("/protected")
+                history.push("/getusers")
             })
-            .catch( err => console.log("error registering user",err))
+            .catch(err => console.log("error registering user",err))
     };
 
     return (

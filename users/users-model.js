@@ -13,7 +13,7 @@ function findById(id){
 };
 
 function find(){
-    return db("users").select("id","password","department")
+    return db("users").select("id","username","password","department")
 };
 
 function findBy(filter){
